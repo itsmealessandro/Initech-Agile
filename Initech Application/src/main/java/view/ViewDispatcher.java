@@ -1,6 +1,6 @@
 package view;
 
-import controller.DataInitializable;
+import controllers.DataInitializable;
 import domain.Utente;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

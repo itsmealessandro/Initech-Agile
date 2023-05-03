@@ -1,10 +1,10 @@
 package business.implementazioneRam;
 
 
-import business.CouprojectBusinessFactory;
+import business.InitechBusinessFactory;
 import business.UtenteService;
 
-public class RAMCouprojectFactoryImpl extends CouprojectBusinessFactory {
+public class RAMCouprojectFactoryImpl extends InitechBusinessFactory {
 
 
     private UtenteService utenteService;

@@ -1,4 +1,4 @@
-package controller;
+package controllers;
 
 import domain.Amministratore;
 import domain.Cliente;
@@ -26,13 +26,10 @@ public class LayoutController implements Initializable, DataInitializable<Utente
             new MenuElement("Visualizza veterinari", "visualizza-veterinari"),
 
     };
-    private static final MenuElement[] MENU_VETERINARIO = {
-            new MenuElement("Visualizza Ospiti", "veterinario-visualizza-ospiti"),
-            new MenuElement("prova 2", "login")
+    private static final MenuElement[] MENU_CLIENTE_BASE = {
 
     };
     private static final MenuElement[] MENU_CLIENTE = {
-            new MenuElement("Visualizza Ospiti", "cliente-visualizza-ospiti"),
 
     };
     @FXML

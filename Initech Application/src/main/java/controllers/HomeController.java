@@ -1,4 +1,4 @@
-package controller;
+package controllers;
 
 import domain.Utente;
 import javafx.fxml.FXML;

@@ -1,6 +1,6 @@
 package view;
 
-import controller.DataInitializable;
+import controllers.DataInitializable;
 import javafx.scene.Parent;
 
 public class View<T> {

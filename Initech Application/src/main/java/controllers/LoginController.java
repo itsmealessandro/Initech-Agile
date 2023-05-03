@@ -1,8 +1,7 @@
-package controller;
+package controllers;
 
-import business.BusinessException;
-import business.CouprojectBusinessFactory;
-import business.UtenteNotFoundException;
+
+import business.InitechBusinessFactory;
 import business.UtenteService;
 import domain.Utente;
 import javafx.event.ActionEvent;
@@ -32,15 +31,12 @@ public class LoginController implements Initializable, DataInitializable<Utente>
     @FXML
     private Button loginButton;
 
-    @FXML
-    private Button registrazioneButton;
-
     private UtenteService utenteService;
 
     private ViewDispatcher dispatcher;
 
     public LoginController() {
-        CouprojectBusinessFactory factory = CouprojectBusinessFactory.getInstance();
+        InitechBusinessFactory factory = InitechBusinessFactory.getInstance();
         utenteService = factory.getUtenteService();
         dispatcher = ViewDispatcher.getInstance();
     }
@@ -52,18 +48,11 @@ public class LoginController implements Initializable, DataInitializable<Utente>
 
     @FXML
     public void loginAction(ActionEvent event) {
-        try {
-            Utente utente = utenteService.authenticate(username.getText(), password.getText());
-            dispatcher.loggedIn(utente);
-        } catch (UtenteNotFoundException e) {
-            loginErrorLabel.setText("Username e/o password errati!");
-        } catch (BusinessException e) {
-            dispatcher.renderError(e);
-        }
+
     }
 
     @FXML
     public void registrazioneAction(ActionEvent event) throws ViewException {
-        dispatcher.registrazioneView();
+
     }
 }
