@@ -6,6 +6,10 @@
           <option name="url" value="https://github.com/disim-lpo-2021-2022/canile-we-are-ready-theoretically.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/itsmealessandro/Initech-Agile.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="$USER_HOME$/Documents" />
