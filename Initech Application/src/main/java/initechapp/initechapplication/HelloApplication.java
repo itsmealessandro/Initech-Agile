@@ -14,6 +14,5 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws Exception {
         ViewDispatcher dispatcher = ViewDispatcher.getInstance();
         dispatcher.loginView(stage);
-
     }
 }

@@ -85,7 +85,7 @@ public class ViewDispatcher {
     private <T> View<T> loadView(String viewName) throws ViewException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(RESOURCE_BASE + viewName + FXML_SUFFIX));
-            Parent parent = (Parent) loader.load();
+            Parent parent = loader.load();
             return new View<>(parent, loader.getController());
 
         } catch (IOException ex) {
