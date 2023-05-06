@@ -2,7 +2,7 @@ package domain;
 
 public class Utente {
     /*
-     * La classe Utente è stata creata per convogliare le 3 classi (Amministratore,Cliente,Veterinario)
+     * La classe Utente è stata creata per convogliare le 5 classi (Amministratore,Cliente,Maestro)
      * In una sola classe, in modo da poter passare al dispatcher solo l'Utente permettendoci di non dover creare
      * un metodo per ogni classe nel dispatcher. Permettendo così un miglior riuso del codice.
      *
@@ -16,13 +16,16 @@ public class Utente {
     private String username;
     private String password;
 
-    public Utente( Integer id, String nome, String cognome, int eta, String codiceFiscale, String username, String password) {
-        this.id= id;
+    public Utente() {
+    }
+
+    public Utente(Integer id, String nome, String cognome, int eta, String codiceFiscale, String username, String password) {
+        this.id = id;
         this.nome = nome;
         this.cognome = cognome;
         this.eta = eta;
         this.codiceFiscale = codiceFiscale;
-        this.username=username;
+        this.username = username;
         this.password = password;
     }
 

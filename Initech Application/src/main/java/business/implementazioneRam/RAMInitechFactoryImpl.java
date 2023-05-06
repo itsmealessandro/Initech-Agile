@@ -4,13 +4,13 @@ package business.implementazioneRam;
 import business.InitechBusinessFactory;
 import business.UtenteService;
 
-public class RAMCouprojectFactoryImpl extends InitechBusinessFactory {
+public class RAMInitechFactoryImpl extends InitechBusinessFactory {
 
 
     private UtenteService utenteService;
 
 
-    public RAMCouprojectFactoryImpl() {
+    public RAMInitechFactoryImpl() {
         utenteService = new RAMUtenteServiceImpl();
 
     }

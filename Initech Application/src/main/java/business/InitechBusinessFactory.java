@@ -1,10 +1,10 @@
 package business;
 
-import business.implementazioneRam.RAMCouprojectFactoryImpl;
+import business.implementazioneRam.RAMInitechFactoryImpl;
 
 public abstract class InitechBusinessFactory {
 
-    private static InitechBusinessFactory factory = new RAMCouprojectFactoryImpl();
+    private static InitechBusinessFactory factory = new RAMInitechFactoryImpl();
 
     public static InitechBusinessFactory getInstance() {
         return factory;

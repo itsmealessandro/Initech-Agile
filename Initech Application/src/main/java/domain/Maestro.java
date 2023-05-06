@@ -3,6 +3,7 @@ package domain;
 public class Maestro extends Utente {
     //ASSOCIAZIONI
 
+
     public Maestro(Integer id, String nome, String cognome, int eta, String codiceFiscale, String username, String password) {
         super(id, nome, cognome, eta, codiceFiscale, username, password);
     }
