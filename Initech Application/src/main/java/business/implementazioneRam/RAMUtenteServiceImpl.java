@@ -4,8 +4,9 @@ import business.BusinessException;
 import business.UtenteNotFoundException;
 import business.UtenteService;
 import domain.Amministratore;
-import domain.Cliente;
+import domain.Socio;
 import domain.Utente;
+import domain.UtenteRegistrato;
 
 import java.util.HashSet;
 
@@ -14,20 +15,33 @@ public class RAMUtenteServiceImpl implements UtenteService {
 
     // Lista di Utenti
     public HashSet<Utente> listaUtenti;
-    private int contatoreID = 3; // inizializzato a 3 poiché abbiamo creato 3 utenti iniziali
+    private int contatoreID = 0;
 
     public RAMUtenteServiceImpl() {
-        // creazione lista utenti
+
         this.listaUtenti = new HashSet<Utente>();
 
-
-        Utente amministratore = new Amministratore(
-                0, "Alessandro", "Brini", 40, "HNVDQW80L65E578A", "a", "a");
+        // Utenti presenti all'avvio dell'applicazione
+        Utente amministratore = new Amministratore();
+        amministratore.setEmail("a@gmail.com");
+        amministratore.setUsername("a");
+        amministratore.setPassword("a");
         listaUtenti.add(amministratore);
+        contatoreID++;
 
-        Cliente cliente = new Cliente(
-                2, "Lucio", "Rosa", 18, "RZTNTX98E29D884P", "c", "c");
-        listaUtenti.add(cliente);
+        Utente socio = new Socio();
+        socio.setEmail("s@gmail.com");
+        socio.setUsername("s");
+        socio.setPassword("s");
+        listaUtenti.add(socio);
+        contatoreID++;
+
+        Utente utenteRegistrato = new UtenteRegistrato();
+        utenteRegistrato.setEmail("u@gmail.com");
+        utenteRegistrato.setUsername("u");
+        utenteRegistrato.setPassword("u");
+        listaUtenti.add(utenteRegistrato);
+        contatoreID++;
 
 
     }
@@ -46,9 +60,10 @@ public class RAMUtenteServiceImpl implements UtenteService {
     public boolean registrazione(String nome, String cognome, int eta, String CF, String username, String password)
             throws BusinessException {
         if (controlloEsistenza(username)) return false;
-        Utente nuovoCliente = new Cliente(contatoreID, nome, cognome, eta, CF, username, password);
+        // TODO da completare
+        Utente nuovoCliente;
         contatoreID++;
-        this.listaUtenti.add(nuovoCliente);
+        // this.listaUtenti.add(nuovoCliente);
         return true;
     }
 
@@ -63,28 +78,13 @@ public class RAMUtenteServiceImpl implements UtenteService {
     }
 
     @Override
-    public boolean modificaUtente(String nome, String cognome, int eta, String codiceFiscale, String
-            username, String password, int id, String newUsername) throws BusinessException {
-        // ritorna falso se il metodo ritorna true (ovvero se quello username è esistente)
-        if (controlloEsistenza(newUsername)) return false;
-        for (Utente utente : listaUtenti) {
-            if (utente.getId() == id) {
-                utente.setNome(nome);
-                utente.setCognome(cognome);
-                utente.setEta(eta);
-                utente.setCodiceFiscale(codiceFiscale);
-                utente.setUsername(username);
-                utente.setPassword(password);
-            }
-        }
+    // ritorna falso se il metodo ritorna true (ovvero se quello username è esistente)
+    public boolean modificaUtente(Utente utente, String newUsername) throws BusinessException {
+
+
         return true;
     }
 
-
-    @Override
-    public void creaAssociazioni() {
-
-    }
 
     @Override
     public void rimuoviUtente(int id) throws BusinessException {

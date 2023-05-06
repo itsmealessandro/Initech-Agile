@@ -8,11 +8,8 @@ public interface UtenteService {
     boolean registrazione(String nome, String cognome, int eta, String CF, String username, String password) throws BusinessException;
 
 
-    void creaAssociazioni();
-
     void rimuoviUtente(int id) throws BusinessException;
 
-    boolean modificaUtente(String nome, String cognome, int eta, String codiceFiscale, String
-            username, String password, int id,String newUsername) throws BusinessException;
+    boolean modificaUtente(Utente utente,String newUsername) throws BusinessException;
 
 }

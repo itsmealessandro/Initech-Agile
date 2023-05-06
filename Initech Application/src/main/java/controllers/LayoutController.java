@@ -1,8 +1,6 @@
 package controllers;
 
-import domain.Amministratore;
-import domain.Cliente;
-import domain.Utente;
+import domain.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,14 +21,16 @@ public class LayoutController implements Initializable, DataInitializable<Utente
     private static final MenuElement MENU_HOME = new MenuElement("Home", "home");
 
     private static final MenuElement[] MENU_AMMINISTRATORE = {
-            new MenuElement("Visualizza veterinari", "visualizza-veterinari"),
-
+            new MenuElement("Visualizza calendario", "amministratore-calendario")
     };
-    private static final MenuElement[] MENU_CLIENTE_BASE = {
+    private static final MenuElement[] MENU_UTENTE_NON_REGISTRATO = {
+            new MenuElement("Visualizza calendario", "amministratore-calendario")
+    };
+    private static final MenuElement[] MENU_MAESTRO = {
 
     };
     private static final MenuElement[] MENU_CLIENTE = {
-
+            new MenuElement("Visualizza calendario", "amministratore-calendario")
     };
     @FXML
     private VBox menuBar;
@@ -55,7 +55,13 @@ public class LayoutController implements Initializable, DataInitializable<Utente
                 menuBar.getChildren().add(createButton(menu));
             }
         }
-        if (utente instanceof Cliente) {
+        if (utente instanceof UtenteRegistrato || utente instanceof Socio) {
+            for (MenuElement menu : MENU_CLIENTE) {
+                menuBar.getChildren().add(createButton(menu));
+            }
+        }
+
+        if (utente instanceof Maestro) {
             for (MenuElement menu : MENU_CLIENTE) {
                 menuBar.getChildren().add(createButton(menu));
             }

@@ -9,25 +9,14 @@ public class Utente {
      * */
 
     private Integer id;
-    private String nome;
-    private String cognome;
-    private int eta;
-    private String codiceFiscale; // Chiave univoca
     private String username;
     private String password;
+
+    private String email;
 
     public Utente() {
     }
 
-    public Utente(Integer id, String nome, String cognome, int eta, String codiceFiscale, String username, String password) {
-        this.id = id;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.eta = eta;
-        this.codiceFiscale = codiceFiscale;
-        this.username = username;
-        this.password = password;
-    }
 
     public Integer getId() {
         return id;
@@ -49,62 +38,35 @@ public class Utente {
         this.password = password;
     }
 
-
-    public String getNome() {
-        return nome;
+    public String getEmail() {
+        return email;
     }
 
-    public String getCognome() {
-        return cognome;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getEta() {
-        return eta;
-    }
-
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getCodiceFiscale() {
-        return codiceFiscale;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
-
-    public void setEta(int eta) {
-        this.eta = eta;
-    }
-
-    public void setCodiceFiscale(String codiceFiscale) {
-        this.codiceFiscale = codiceFiscale;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Utente)) return false;
         Utente utente = (Utente) o;
-        if (utente.getId() == this.id)
+        if (
+                utente.getUsername().equals(this.username) &&
+                        utente.getEmail().equals(this.email) &&
+                        utente.getPassword().equals(this.password)
+        )
             return true;
         else return false;
     }
 
     @Override
     public String toString() {
-        return "{" +
-                "nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'' +
-                ", eta=" + eta +
-                ", codiceFiscale='" + codiceFiscale + '\'' +
+        return this.getClass() +"{" +
+                "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
