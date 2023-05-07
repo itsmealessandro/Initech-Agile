@@ -53,6 +53,6 @@ public class LoginController implements Initializable, DataInitializable<Utente>
 
     @FXML
     public void registrazioneAction(ActionEvent event) throws ViewException {
-
+        dispatcher.renderView("registrazione", null);
     }
 }
