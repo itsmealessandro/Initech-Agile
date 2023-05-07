@@ -18,6 +18,7 @@ public class ViewDispatcher {
 
     private Stage stage;
     private BorderPane layout;
+    private Utente loggedUser;
 
     private ViewDispatcher() {
     }

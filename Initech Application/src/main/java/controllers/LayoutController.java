@@ -21,16 +21,17 @@ public class LayoutController implements Initializable, DataInitializable<Utente
     private static final MenuElement MENU_HOME = new MenuElement("Home", "home");
 
     private static final MenuElement[] MENU_AMMINISTRATORE = {
-            new MenuElement("Visualizza calendario", "amministratore-calendario")
+            new MenuElement("Visualizza Calendario", "amministratore-calendario"),
+            new MenuElement("Modifica Profilo", "gestione-profilo")
     };
     private static final MenuElement[] MENU_UTENTE_NON_REGISTRATO = {
-            new MenuElement("Visualizza calendario", "amministratore-calendario")
+            new MenuElement("Modifica Profilo", "gestione-profilo")
     };
     private static final MenuElement[] MENU_MAESTRO = {
-
+            new MenuElement("Modifica Profilo", "gestione-profilo")
     };
     private static final MenuElement[] MENU_CLIENTE = {
-            new MenuElement("Visualizza calendario", "amministratore-calendario")
+            new MenuElement("Modifica Profilo", "gestione-profilo")
     };
     @FXML
     private VBox menuBar;

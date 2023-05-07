@@ -1,7 +1,9 @@
 package controllers;
 
 
+import business.BusinessException;
 import business.InitechBusinessFactory;
+import business.UtenteNotFoundException;
 import business.UtenteService;
 import domain.Utente;
 import javafx.event.ActionEvent;
@@ -48,11 +50,19 @@ public class LoginController implements Initializable, DataInitializable<Utente>
 
     @FXML
     public void loginAction(ActionEvent event) {
+        try {
+            Utente utente = utenteService.authenticate(username.getText(), password.getText());
 
+            dispatcher.loggedIn(utente);
+        } catch (UtenteNotFoundException e) {
+            loginErrorLabel.setText("Username e/o password errati!");
+        } catch (BusinessException e) {
+            dispatcher.renderError(e);
+        }
     }
 
     @FXML
     public void registrazioneAction(ActionEvent event) throws ViewException {
-        dispatcher.renderView("registrazione", null);
+        dispatcher.registrazioneView();
     }
 }
