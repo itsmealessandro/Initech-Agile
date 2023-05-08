@@ -80,7 +80,18 @@ public class RAMUtenteServiceImpl implements UtenteService {
     // ritorna falso se il metodo ritorna true (ovvero se quello username è esistente)
     public boolean modificaUtente(Utente utente, String newUsername) throws BusinessException {
 
+        // Controllo se esiste già un username con quel nome
+        if (controlloEsistenza(newUsername)) {
+            throw new BusinessException("Username già presente");
+        }
+        for (Utente utenteX : listaUtenti) {
+            if (utenteX.equals(utente)) {
+                utenteX.setUsername(newUsername);
+                utenteX.setEmail(utente.getEmail());
+                utenteX.setPassword(utente.getPassword());
 
+            }
+        }
         return true;
     }
 
