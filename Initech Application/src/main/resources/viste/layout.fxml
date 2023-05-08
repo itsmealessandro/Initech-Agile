@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controllers.LayoutController">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#logoutAction" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LayoutController">
     <top>
-        <HBox prefHeight="85.0" prefWidth="600.0" style="-fx-background-color: #FFA07A;" BorderPane.alignment="CENTER"/>
+        <HBox prefHeight="85.0" prefWidth="600.0" style="-fx-background-color: #FFA07A;" BorderPane.alignment="CENTER">
+         <children>
+            <Separator orientation="VERTICAL" prefHeight="86.0" prefWidth="0.0">
+               <HBox.margin>
+                  <Insets left="700.0" />
+               </HBox.margin>
+            </Separator>
+            <ImageView fitHeight="85.0" fitWidth="95.0" nodeOrientation="INHERIT" onMouseClicked="#logoutAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Immagini/logout.png" />
+               </image>
+            </ImageView>
+         </children></HBox>
     </top>
     <left>
-        <VBox fx:id="menuBar" prefWidth="85.0" style="-fx-background-color: #008000;" BorderPane.alignment="CENTER"/>
+        <VBox fx:id="menuBar" prefHeight="514.0" prefWidth="124.0" style="-fx-background-color: #008000;" BorderPane.alignment="CENTER" />
     </left>
 </BorderPane>

@@ -21,17 +21,17 @@ public class LayoutController implements Initializable, DataInitializable<Utente
     private static final MenuElement MENU_HOME = new MenuElement("Home", "home");
 
     private static final MenuElement[] MENU_AMMINISTRATORE = {
-            new MenuElement("Visualizza Calendario", "amministratore-calendario"),
-            new MenuElement("Modifica Profilo", "gestione-profilo")
+            //new MenuElement("Visualizza Calendario", "amministratore-calendario"),
+            new MenuElement("Profilo", "gestione-profilo")
     };
     private static final MenuElement[] MENU_UTENTE_NON_REGISTRATO = {
-            new MenuElement("Modifica Profilo", "gestione-profilo")
+            new MenuElement("Profilo", "gestione-profilo")
     };
     private static final MenuElement[] MENU_MAESTRO = {
-            new MenuElement("Modifica Profilo", "gestione-profilo")
+            new MenuElement("Profilo", "gestione-profilo")
     };
     private static final MenuElement[] MENU_CLIENTE = {
-            new MenuElement("Modifica Profilo", "gestione-profilo")
+            new MenuElement("Profilo", "gestione-profilo")
     };
     @FXML
     private VBox menuBar;
@@ -63,7 +63,7 @@ public class LayoutController implements Initializable, DataInitializable<Utente
         }
 
         if (utente instanceof Maestro) {
-            for (MenuElement menu : MENU_CLIENTE) {
+            for (MenuElement menu : MENU_MAESTRO) {
                 menuBar.getChildren().add(createButton(menu));
             }
         }
@@ -82,7 +82,7 @@ public class LayoutController implements Initializable, DataInitializable<Utente
     }
 
     @FXML
-    public void esciAction(MouseEvent event) {
+    public void logoutAction(MouseEvent event) {
         dispatcher.logout();
     }
 
