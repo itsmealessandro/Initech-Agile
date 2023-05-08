@@ -4,6 +4,7 @@ import business.BusinessException;
 import business.InitechBusinessFactory;
 import business.UtenteService;
 import domain.Utente;
+import domain.UtenteRegistrato;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,15 +20,9 @@ import java.util.ResourceBundle;
 public class RegistrazioneController implements Initializable, DataInitializable<Utente>{
 
     @FXML
-    private TextField nome;
-    @FXML
-    private TextField cognome;
-    @FXML
-    private TextField eta;
-    @FXML
-    private TextField codiceFiscale;
-    @FXML
     private TextField username;
+    @FXML
+    private TextField email;
     @FXML
     private PasswordField password;
     @FXML
@@ -48,24 +43,23 @@ public class RegistrazioneController implements Initializable, DataInitializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        registrazioneButton.disableProperty().bind(nome.textProperty().isEmpty().
-                or(cognome.textProperty().isEmpty().
-                        or(eta.textProperty().isEmpty().
-                                or(codiceFiscale.textProperty().isEmpty().
-                                        or(username.textProperty().isEmpty().
+        registrazioneButton.disableProperty().bind(username.textProperty().isEmpty().
+                                        or(email.textProperty().isEmpty().
                                                 or(password.textProperty().isEmpty().
-                                                        or(confermaPassword.textProperty().isEmpty())))))));
+                                                        or(confermaPassword.textProperty().isEmpty()))));
 
         erroreRegistrazioneLabel.setVisible(false);
     }
 
     @FXML
     public void registrazioneAction(ActionEvent event) {
-
+        UtenteRegistrato utente=new UtenteRegistrato();
+        utente.setUsername(username.getText());
+        utente.setEmail(email.getText());
+        utente.setPassword(password.getText());
         try {
             if (password.getText().equals(confermaPassword.getText())) {
-                if (utenteService.registrazione(nome.getText(), cognome.getText(),
-                        Integer.valueOf(eta.getText()), codiceFiscale.getText(), username.getText(), password.getText())) {
+                if (utenteService.registrazione(utente)) {
                     dispatcher.logout();
                 } else {
                     erroreRegistrazioneLabel.setVisible(true);

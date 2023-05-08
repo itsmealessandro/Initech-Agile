@@ -57,13 +57,12 @@ public class RAMUtenteServiceImpl implements UtenteService {
 
 
     @Override
-    public boolean registrazione(String nome, String cognome, int eta, String CF, String username, String password)
+    public boolean registrazione(UtenteRegistrato utente)
             throws BusinessException {
-        if (controlloEsistenza(username)) return false;
-        // TODO da completare
-        Utente nuovoCliente;
+        if (controlloEsistenza(utente.getUsername())) return false;
+        utente.setId(contatoreID);
         contatoreID++;
-        // this.listaUtenti.add(nuovoCliente);
+        this.listaUtenti.add(utente);
         return true;
     }
 

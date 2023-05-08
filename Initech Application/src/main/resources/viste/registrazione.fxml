@@ -11,13 +11,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F0F8FF;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RegistrazioneController">
     <children>
-        <TextField fx:id="nome" layoutX="58.0" layoutY="129.0" promptText="Nome" />
-        <TextField fx:id="cognome" layoutX="296.0" layoutY="129.0" promptText="Cognome" />
-        <TextField fx:id="eta" layoutX="58.0" layoutY="188.0" promptText="Età" />
-        <TextField fx:id="codiceFiscale" layoutX="296.0" layoutY="188.0" promptText="Codice FIscale" />
-        <TextField fx:id="username" layoutX="58.0" layoutY="249.0" promptText="Username" />
-        <PasswordField fx:id="password" layoutX="296.0" layoutY="249.0" promptText="Password" />
-        <PasswordField fx:id="confermaPassword" layoutX="59.0" layoutY="304.0" promptText="Conferma Password" />
+        <TextField fx:id="username" layoutX="59.0" layoutY="140.0" promptText="Username" />
+      <TextField fx:id="email" layoutX="301.0" layoutY="140.0" promptText="Email" />
+        <PasswordField fx:id="password" layoutX="59.0" layoutY="188.0" promptText="Password" />
+        <PasswordField fx:id="confermaPassword" layoutX="301.0" layoutY="188.0" promptText="Conferma Password" />
         <Button fx:id="registrazioneButton" layoutX="386.0" layoutY="316.0" mnemonicParsing="false" onAction="#registrazioneAction" text="Registrati" />
         <Label layoutX="153.0" layoutY="33.0" prefHeight="53.0" prefWidth="244.0" text="REGISTRAZIONE">
             <font>

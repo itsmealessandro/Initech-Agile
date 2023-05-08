@@ -1,11 +1,12 @@
 package business;
 
 import domain.Utente;
+import domain.UtenteRegistrato;
 
 public interface UtenteService {
 
     Utente authenticate(String username, String password) throws UtenteNotFoundException, BusinessException;
-    boolean registrazione(String nome, String cognome, int eta, String CF, String username, String password) throws BusinessException;
+    boolean registrazione(UtenteRegistrato utente) throws BusinessException;
 
 
     void rimuoviUtente(int id) throws BusinessException;
