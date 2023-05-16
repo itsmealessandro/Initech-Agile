@@ -3,12 +3,11 @@ package business.implementazioneRam;
 import business.BusinessException;
 import business.UtenteNotFoundException;
 import business.UtenteService;
-import domain.Amministratore;
-import domain.Socio;
-import domain.Utente;
-import domain.UtenteRegistrato;
+import domain.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 
 public class RAMUtenteServiceImpl implements UtenteService {
@@ -29,11 +28,24 @@ public class RAMUtenteServiceImpl implements UtenteService {
         listaUtenti.add(amministratore);
         contatoreID++;
 
-        Utente socio = new Socio();
+        Socio socio = new Socio();
+        socio.setNome("Fabio");
+        socio.setCognome("Quagliarella");
+        socio.setTipologiaSocio(TipologiaSocio.FREE);
         socio.setEmail("s@gmail.com");
         socio.setUsername("s");
         socio.setPassword("s");
         listaUtenti.add(socio);
+        contatoreID++;
+
+        Socio socio2 = new Socio();
+        socio2.setNome("Luca");
+        socio2.setCognome("Signori");
+        socio2.setTipologiaSocio(TipologiaSocio.PREMIUM);
+        socio2.setEmail("s2@gmail.com");
+        socio2.setUsername("s2");
+        socio2.setPassword("s");
+        listaUtenti.add(socio2);
         contatoreID++;
 
         Utente utenteRegistrato = new UtenteRegistrato();
@@ -99,6 +111,20 @@ public class RAMUtenteServiceImpl implements UtenteService {
     @Override
     public void rimuoviUtente(int id) throws BusinessException {
 
+    }
+
+    @Override
+    public List<Socio> getAllSoci() throws BusinessException {
+        List<Socio> socioList = new ArrayList<>();
+
+        for (Utente utente : listaUtenti) {
+            if (utente instanceof Socio) {
+                socioList.add((Socio) utente);
+            }
+        }
+
+        if (socioList.size() == 0) throw new BusinessException("Non sono presenti Soci");
+        return socioList;
     }
 }
 

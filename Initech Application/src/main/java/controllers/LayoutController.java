@@ -22,7 +22,8 @@ public class LayoutController implements Initializable, DataInitializable<Utente
 
     private static final MenuElement[] MENU_AMMINISTRATORE = {
             //new MenuElement("Visualizza Calendario", "amministratore-calendario"),
-            new MenuElement("Profilo", "gestione-profilo")
+            new MenuElement("Profilo", "gestione-profilo"),
+            new MenuElement("Soci", "gestione-soci")
     };
     private static final MenuElement[] MENU_UTENTE_NON_REGISTRATO = {
             new MenuElement("Profilo", "gestione-profilo")
