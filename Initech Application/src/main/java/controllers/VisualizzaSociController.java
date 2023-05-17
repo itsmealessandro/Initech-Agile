@@ -19,7 +19,7 @@ import view.ViewDispatcher;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GestioneSociController implements Initializable, DataInitializable<Utente> {
+public class VisualizzaSociController implements Initializable, DataInitializable<Utente> {
 
     private ViewDispatcher dispatcher;
     private UtenteService utenteService;
@@ -37,7 +37,7 @@ public class GestioneSociController implements Initializable, DataInitializable<
     @FXML
     Label errorLabel;
 
-    public GestioneSociController() {
+    public VisualizzaSociController() {
         dispatcher = ViewDispatcher.getInstance();
         utenteService = InitechBusinessFactory.getInstance().getUtenteService();
     }

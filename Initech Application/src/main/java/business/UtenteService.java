@@ -1,5 +1,6 @@
 package business;
 
+import domain.Maestro;
 import domain.Socio;
 import domain.Utente;
 import domain.UtenteRegistrato;
@@ -12,10 +13,14 @@ public interface UtenteService {
 
     boolean registrazione(UtenteRegistrato utente) throws BusinessException;
 
-    void rimuoviUtente(int id) throws BusinessException;
+    boolean rimuoviUtente(int id) throws BusinessException;
 
     boolean modificaUtente(Utente utente, String newUsername) throws BusinessException;
 
     List<Socio> getAllSoci() throws BusinessException;
+
+    List<Maestro> getAllMaestri() throws BusinessException;
+
+    boolean aggiungiMaestro(Maestro maestro) throws BusinessException;
 
 }

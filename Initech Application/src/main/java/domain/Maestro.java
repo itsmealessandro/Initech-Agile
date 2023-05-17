@@ -3,6 +3,9 @@ package domain;
 public class Maestro extends Utente {
     //ASSOCIAZIONI
 
+    public Maestro(){
+        super();
+    }
 
     @Override
     public boolean equals(Object o) {

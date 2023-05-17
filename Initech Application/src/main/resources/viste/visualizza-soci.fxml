@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GestioneSociController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VisualizzaSociController">
     <children>
-        <Label alignment="CENTER" layoutX="281.0" layoutY="14.0" text="Gestione Soci" textAlignment="CENTER">
+        <Label alignment="CENTER" layoutX="281.0" layoutY="14.0" text="Visualizza Soci" textAlignment="CENTER">
             <font>
                 <Font name="Calibri" size="25.0" />
             </font>

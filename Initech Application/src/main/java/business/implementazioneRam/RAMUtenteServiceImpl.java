@@ -7,6 +7,7 @@ import domain.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -25,6 +26,7 @@ public class RAMUtenteServiceImpl implements UtenteService {
         amministratore.setEmail("a@gmail.com");
         amministratore.setUsername("a");
         amministratore.setPassword("a");
+        amministratore.setId(contatoreID);
         listaUtenti.add(amministratore);
         contatoreID++;
 
@@ -35,6 +37,7 @@ public class RAMUtenteServiceImpl implements UtenteService {
         socio.setEmail("s@gmail.com");
         socio.setUsername("s");
         socio.setPassword("s");
+        socio.setId(contatoreID);
         listaUtenti.add(socio);
         contatoreID++;
 
@@ -45,6 +48,7 @@ public class RAMUtenteServiceImpl implements UtenteService {
         socio2.setEmail("s2@gmail.com");
         socio2.setUsername("s2");
         socio2.setPassword("s");
+        socio2.setId(contatoreID);
         listaUtenti.add(socio2);
         contatoreID++;
 
@@ -52,10 +56,17 @@ public class RAMUtenteServiceImpl implements UtenteService {
         utenteRegistrato.setEmail("u@gmail.com");
         utenteRegistrato.setUsername("u");
         utenteRegistrato.setPassword("u");
+        utenteRegistrato.setId(contatoreID);
         listaUtenti.add(utenteRegistrato);
         contatoreID++;
 
-
+        Maestro maestro0 = new Maestro();
+        maestro0.setEmail("m@gmail.com");
+        maestro0.setUsername("Mimmo");
+        maestro0.setPassword("m");
+        maestro0.setId(contatoreID);
+        listaUtenti.add(maestro0);
+        contatoreID++;
     }
 
     @Override
@@ -101,16 +112,35 @@ public class RAMUtenteServiceImpl implements UtenteService {
                 utenteX.setUsername(newUsername);
                 utenteX.setEmail(utente.getEmail());
                 utenteX.setPassword(utente.getPassword());
-
             }
         }
         return true;
     }
 
+    @Override
+    public boolean aggiungiMaestro(Maestro maestro) throws BusinessException {
+
+        boolean esito = controlloEsistenza(maestro.getUsername());
+        if(esito == true) throw new BusinessException("username già esistente");
+
+            maestro.setId(contatoreID);
+            contatoreID++;
+            this.listaUtenti.add(maestro);
+            return true;
+    }
+
 
     @Override
-    public void rimuoviUtente(int id) throws BusinessException {
-
+    public boolean rimuoviUtente(int id) throws BusinessException {
+        Iterator<Utente> utenteIterator = listaUtenti.iterator();
+        while (utenteIterator.hasNext()){
+            Utente utente = utenteIterator.next();
+            if(utente.getId() == id){
+                utenteIterator.remove();
+                return true;
+            }
+        }
+        throw new BusinessException("Utente non trovato");
     }
 
     @Override
@@ -125,6 +155,20 @@ public class RAMUtenteServiceImpl implements UtenteService {
 
         if (socioList.size() == 0) throw new BusinessException("Non sono presenti Soci");
         return socioList;
+    }
+
+    @Override
+    public List<Maestro> getAllMaestri() throws BusinessException {
+        List<Maestro> maestroList = new ArrayList<>();
+
+        for (Utente utente : listaUtenti) {
+            if (utente instanceof Maestro) {
+                maestroList.add((Maestro) utente);
+            }
+        }
+
+        if (maestroList.size() == 0) throw new BusinessException("Non sono presenti Maestri");
+        return maestroList;
     }
 }
 

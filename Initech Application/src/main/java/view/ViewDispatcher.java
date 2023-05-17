@@ -101,4 +101,8 @@ public class ViewDispatcher {
         stage.show();
     }
 
+    public Utente getLoggedUser() {
+        return loggedUser;
+    }
+
 }
