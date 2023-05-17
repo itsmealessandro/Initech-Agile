@@ -11,4 +11,5 @@ public abstract class InitechBusinessFactory {
     }
 
     public abstract UtenteService getUtenteService();
+    public abstract ImpiantoService getImpiantoService();
 }
