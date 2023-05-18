@@ -1,20 +1,18 @@
 package domain;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class ImpiantoSportivo {
     private Integer id;
+    private String nome;
     private String tipologia;
     private int prezzo;
     private String terreno;
 
-    public ImpiantoSportivo(Integer id, String tipologia, int prezzo, String terreno) {
-        this.id = id;
-        this.tipologia = tipologia;
-        this.prezzo = prezzo;
-        this.terreno = terreno;
-    }
-    public ImpiantoSportivo(){};
+    // Associazioni
+    Set<Socio> elencoSoci;
+
 
     public Integer getId() {
         return id;
@@ -22,6 +20,14 @@ public class ImpiantoSportivo {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getTipologia() {
@@ -48,14 +54,17 @@ public class ImpiantoSportivo {
         this.terreno = terreno;
     }
 
+    public Set<Socio> getElencoSoci() {
+        return elencoSoci;
+    }
+
+    public void setElencoSoci(Set<Socio> elencoSoci) {
+        this.elencoSoci = elencoSoci;
+    }
+
     @Override
     public String toString() {
-        return "ImpiantoSportivo{" +
-                "id=" + id +
-                ", tipologia='" + tipologia + '\'' +
-                ", prezzo=" + prezzo +
-                ", terreno='" + terreno + '\'' +
-                '}';
+        return nome;
     }
 
     @Override

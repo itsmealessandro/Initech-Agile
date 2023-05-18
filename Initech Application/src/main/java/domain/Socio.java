@@ -1,10 +1,13 @@
 package domain;
 
 public class Socio extends Utente {
-    //ASSOCIAZIONI
+
 
     private String nome, cognome;
     private TipologiaSocio tipologiaSocio;
+
+    //ASSOCIAZIONI
+    private ImpiantoSportivo impiantoSportivo;
 
     public String getNome() {
         return nome;
@@ -28,6 +31,14 @@ public class Socio extends Utente {
 
     public void setTipologiaSocio(TipologiaSocio tipologiaSocio) {
         this.tipologiaSocio = tipologiaSocio;
+    }
+
+    public ImpiantoSportivo getImpiantoSportivo() {
+        return impiantoSportivo;
+    }
+
+    public void setImpiantoSportivo(ImpiantoSportivo impiantoSportivo) {
+        this.impiantoSportivo = impiantoSportivo;
     }
 
     @Override
