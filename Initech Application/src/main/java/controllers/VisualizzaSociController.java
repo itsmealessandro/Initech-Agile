@@ -35,6 +35,8 @@ public class VisualizzaSociController implements Initializable, DataInitializabl
     @FXML
     TableColumn<Socio, String> emailColumn;
     @FXML
+    TableColumn<Socio, String> impiantoColumn;
+    @FXML
     Label errorLabel;
 
     public VisualizzaSociController() {
@@ -58,6 +60,9 @@ public class VisualizzaSociController implements Initializable, DataInitializabl
 
         emailColumn.setStyle("-fx-alignment: CENTER");
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+
+        impiantoColumn.setStyle("-fx-alignment: CENTER");
+        impiantoColumn.setCellValueFactory(new PropertyValueFactory<>("ImpiantoSportivo"));
 
 
     }
