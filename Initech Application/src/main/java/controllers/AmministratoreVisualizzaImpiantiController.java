@@ -61,7 +61,7 @@ public void initialize(URL location, ResourceBundle resources) {
         gestioneColumn.setCellValueFactory(param -> {
 final Button gestioneButton = new Button("Gestione");
 
-        gestioneButton.setOnAction(event -> dispatcher.renderView("gestione-impianto", param.getValue()));
+        gestioneButton.setOnAction(event -> dispatcher.renderView("gestione-impianti", param.getValue()));
 
         return new SimpleObjectProperty<>(gestioneButton);
         });
@@ -82,6 +82,6 @@ public void initializeData(Utente utente) {
 
 public void aggiungiAction() {
         ImpiantoSportivo nuovoImpianto = new ImpiantoSportivo();
-        dispatcher.renderView("gestione-impianto", nuovoImpianto);
+        dispatcher.renderView("gestione-impianti", nuovoImpianto);
         }
         }
