@@ -1,6 +1,7 @@
 package domain;
 
 public class Maestro extends Utente {
+
     //ASSOCIAZIONI
 
     public Maestro(){
@@ -16,4 +17,5 @@ public class Maestro extends Utente {
     public String toString() {
         return "Maestro: { " + super.toString() + " }";
     }
+
 }

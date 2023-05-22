@@ -5,6 +5,7 @@ public class Socio extends Utente {
 
     private String nome, cognome;
     private TipologiaSocio tipologiaSocio;
+    private double wallet;
 
     //ASSOCIAZIONI
     private ImpiantoSportivo impiantoSportivo;
@@ -39,6 +40,14 @@ public class Socio extends Utente {
 
     public void setImpiantoSportivo(ImpiantoSportivo impiantoSportivo) {
         this.impiantoSportivo = impiantoSportivo;
+    }
+
+    public double getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(double wallet) {
+        this.wallet = wallet;
     }
 
     @Override
