@@ -101,7 +101,8 @@ public class GestioneMaestroController implements Initializable, DataInitializab
 
     public void modificaUtenteAction(ActionEvent event) {
         try {
-            utenteService.modificaUtente(maestro, usernameField.getText());
+
+            utenteService.modificaUtente(maestro, usernameField.getText(),false);
             dispatcher.renderView("visualizza-maestri", dispatcher.getLoggedUser());
         } catch (BusinessException e) {
             erroreLabel.setText(e.getMessage());
