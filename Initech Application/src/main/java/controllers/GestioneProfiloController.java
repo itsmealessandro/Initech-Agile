@@ -48,8 +48,16 @@ public class GestioneProfiloController implements DataInitializable<Utente>, Ini
         utenteService = InitechBusinessFactory.getInstance().getUtenteService();
         dispatcher = ViewDispatcher.getInstance();
         ricarica = new HashSet<>();
-        ricarica.add(5.0);ricarica.add(10.0);ricarica.add(15.0);ricarica.add(20.0);ricarica.add(25.0);
-        ricarica.add(30.0);ricarica.add(35.0);ricarica.add(40.0);ricarica.add(45.0);ricarica.add(50.0);
+        ricarica.add(5.0);
+        ricarica.add(10.0);
+        ricarica.add(15.0);
+        ricarica.add(20.0);
+        ricarica.add(25.0);
+        ricarica.add(30.0);
+        ricarica.add(35.0);
+        ricarica.add(40.0);
+        ricarica.add(45.0);
+        ricarica.add(50.0);
 
     }
 
@@ -70,15 +78,15 @@ public class GestioneProfiloController implements DataInitializable<Utente>, Ini
         Collections.sort(sortedRicarica);
         walletComboBox.getItems().addAll(sortedRicarica);
 
-        if(utente instanceof UtenteRegistrato){
-            UtenteRegistrato utenteRegistrato = (UtenteRegistrato)utente;
+        if (utente instanceof UtenteRegistrato) {
+            UtenteRegistrato utenteRegistrato = (UtenteRegistrato) utente;
             walletLabel.setText("Questo è il tuo credito: " + utenteRegistrato.getWallet());
             walletComboBox.setVisible(true);
             walletLabel.setVisible(true);
             centerSeparator.setVisible(true);
             commentText.setVisible(true);
             confermaButton.setVisible(true);
-        } else if (utente instanceof Socio){
+        } else if (utente instanceof Socio) {
             Socio socio = (Socio) utente;
             walletLabel.setText("Questo è il tuo credito: " + socio.getWallet());
             walletComboBox.setVisible(true);
@@ -110,13 +118,19 @@ public class GestioneProfiloController implements DataInitializable<Utente>, Ini
 
         try {
             Utente nuovoUtente = new Utente();
+            boolean usernameModificato = false;
+
+
+            if (!utente.getUsername().equals(usernameField.getText())) {
+                usernameModificato = true;
+            }
 
             nuovoUtente.setUsername(this.utente.getUsername());
 
             nuovoUtente.setEmail(emailField.getText());
             nuovoUtente.setPassword(passwordField.getText());
 
-            utenteService.modificaUtente(nuovoUtente, usernameField.getText());
+            utenteService.modificaUtente(nuovoUtente, usernameField.getText(), usernameModificato);
             nuovoUtente.setUsername(usernameField.getText());
 
             dispatcher.renderView("Home", nuovoUtente);
@@ -129,16 +143,16 @@ public class GestioneProfiloController implements DataInitializable<Utente>, Ini
     }
 
     @FXML
-    public void confermaAction(){
+    public void confermaAction() {
 
-        if(utente instanceof UtenteRegistrato){
-            UtenteRegistrato utenteRegistrato = (UtenteRegistrato)utente;
+        if (utente instanceof UtenteRegistrato) {
+            UtenteRegistrato utenteRegistrato = (UtenteRegistrato) utente;
             utenteRegistrato.setWallet(utenteRegistrato.getWallet() + walletComboBox.getValue());
-        } else if (utente instanceof Socio){
+        } else if (utente instanceof Socio) {
             Socio socio = (Socio) utente;
             socio.setWallet(socio.getWallet() + walletComboBox.getValue());
         }
-        dispatcher.renderView("gestione-profilo",utente);
+        dispatcher.renderView("gestione-profilo", utente);
     }
 
 }

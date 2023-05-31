@@ -101,14 +101,19 @@ public class RAMUtenteServiceImpl implements UtenteService {
 
     @Override
     // ritorna falso se il metodo ritorna true (ovvero se quello username è esistente)
-    public boolean modificaUtente(Utente utente, String newUsername) throws BusinessException {
+    public boolean modificaUtente(Utente utente, String newUsername, boolean usernameModificato) throws BusinessException {
 
-        // Controllo se esiste già un username con quel nome
-        if (controlloEsistenza(newUsername)) {
-            throw new BusinessException("Username già presente");
+
+        if (usernameModificato) {
+            // Controllo se esiste già un username con quel nome
+            if (controlloEsistenza(newUsername)) {
+                throw new BusinessException("Username già presente");
+            }
         }
         for (Utente utenteX : listaUtenti) {
-            if (utenteX.equals(utente)) {
+            // Il controllo va fatto con l'ID e non con l'equalse
+            // Perché gli passiamo l'utente modificato quindi non potrà mai essere uguale
+            if (utenteX.getId() == utente.getId()) {
                 utenteX.setUsername(newUsername);
                 utenteX.setEmail(utente.getEmail());
                 utenteX.setPassword(utente.getPassword());
@@ -121,21 +126,21 @@ public class RAMUtenteServiceImpl implements UtenteService {
     public boolean aggiungiMaestro(Maestro maestro) throws BusinessException {
 
         boolean esito = controlloEsistenza(maestro.getUsername());
-        if(esito == true) throw new BusinessException("username già esistente");
+        if (esito == true) throw new BusinessException("username già esistente");
 
-            maestro.setId(contatoreID);
-            contatoreID++;
-            this.listaUtenti.add(maestro);
-            return true;
+        maestro.setId(contatoreID);
+        contatoreID++;
+        this.listaUtenti.add(maestro);
+        return true;
     }
 
 
     @Override
     public boolean rimuoviUtente(int id) throws BusinessException {
         Iterator<Utente> utenteIterator = listaUtenti.iterator();
-        while (utenteIterator.hasNext()){
+        while (utenteIterator.hasNext()) {
             Utente utente = utenteIterator.next();
-            if(utente.getId() == id){
+            if (utente.getId() == id) {
                 utenteIterator.remove();
                 return true;
             }

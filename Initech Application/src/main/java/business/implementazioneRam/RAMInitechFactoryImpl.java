@@ -24,14 +24,10 @@ public class RAMInitechFactoryImpl extends InitechBusinessFactory {
         utenteService = new RAMUtenteServiceImpl();
         impiantoService = new RAMImpiantoServiceImpl();
         creaAssociazioni();
-
-
     }
 
     // Simula uno stato intermedio dell'applicazione
     private void creaAssociazioni() {
-
-
         try {
             List<Socio> socioArrayList = utenteService.getAllSoci();
 

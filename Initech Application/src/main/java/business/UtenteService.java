@@ -15,7 +15,7 @@ public interface UtenteService {
 
     boolean rimuoviUtente(int id) throws BusinessException;
 
-    boolean modificaUtente(Utente utente, String newUsername) throws BusinessException;
+    boolean modificaUtente(Utente utente, String newUsername, boolean usernameModificato) throws BusinessException;
 
     List<Socio> getAllSoci() throws BusinessException;
 
