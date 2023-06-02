@@ -143,16 +143,8 @@ public class GestioneProfiloController implements DataInitializable<Utente>, Ini
     }
 
     @FXML
-    public void confermaAction() {
-
-        if (utente instanceof UtenteRegistrato) {
-            UtenteRegistrato utenteRegistrato = (UtenteRegistrato) utente;
-            utenteRegistrato.setWallet(utenteRegistrato.getWallet() + walletComboBox.getValue());
-        } else if (utente instanceof Socio) {
-            Socio socio = (Socio) utente;
-            socio.setWallet(socio.getWallet() + walletComboBox.getValue());
-        }
+    public void confermaAction() throws BusinessException {
+        utenteService.ricaricaWallet(utente, walletComboBox.getValue());
         dispatcher.renderView("gestione-profilo", utente);
     }
-
 }

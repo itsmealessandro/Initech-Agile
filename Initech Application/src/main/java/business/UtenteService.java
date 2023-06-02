@@ -21,6 +21,8 @@ public interface UtenteService {
 
     List<Maestro> getAllMaestri() throws BusinessException;
 
+    boolean ricaricaWallet(Utente utente, double wallet) throws BusinessException;
+
     boolean aggiungiMaestro(Maestro maestro) throws BusinessException;
 
 }

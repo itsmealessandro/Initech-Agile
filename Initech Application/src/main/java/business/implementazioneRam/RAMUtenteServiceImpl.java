@@ -80,8 +80,7 @@ public class RAMUtenteServiceImpl implements UtenteService {
 
 
     @Override
-    public boolean registrazione(UtenteRegistrato utente)
-            throws BusinessException {
+    public boolean registrazione(UtenteRegistrato utente) {
         if (controlloEsistenza(utente.getUsername())) return false;
         utente.setId(contatoreID);
         contatoreID++;
@@ -126,7 +125,9 @@ public class RAMUtenteServiceImpl implements UtenteService {
     public boolean aggiungiMaestro(Maestro maestro) throws BusinessException {
 
         boolean esito = controlloEsistenza(maestro.getUsername());
-        if (esito == true) throw new BusinessException("username già esistente");
+        if (esito == true) {
+            throw new BusinessException("username già esistente");
+        }
 
         maestro.setId(contatoreID);
         contatoreID++;
@@ -174,6 +175,21 @@ public class RAMUtenteServiceImpl implements UtenteService {
 
         if (maestroList.size() == 0) throw new BusinessException("Non sono presenti Maestri");
         return maestroList;
+    }
+
+    @Override
+    public boolean ricaricaWallet(Utente utente, double wallet) throws BusinessException {
+
+        if (utente instanceof UtenteRegistrato) {
+            UtenteRegistrato utenteRegistrato = (UtenteRegistrato) utente;
+            utenteRegistrato.setWallet(utenteRegistrato.getWallet() + wallet);
+            return true;
+        } else if (utente instanceof Socio) {
+            Socio socio = (Socio) utente;
+            socio.setWallet(socio.getWallet() + wallet);
+            return true;
+        }
+        return false;
     }
 }
 

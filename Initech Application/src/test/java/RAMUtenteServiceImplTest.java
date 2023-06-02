@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RAMUtenteServiceImplTest {
 
@@ -138,5 +139,48 @@ class RAMUtenteServiceImplTest {
         }
 
 
+    }
+
+    @Test
+    void aggiungiNuovoMaestro() throws BusinessException {
+
+        Maestro maestro = new Maestro();
+        maestro.setId(5);
+        maestro.setEmail("m");
+        maestro.setUsername("ma");
+        maestro.setPassword("ma");
+
+        ramUtenteService.aggiungiMaestro(maestro);
+        assertEquals(maestro, ramUtenteService.authenticate("ma", "ma"));
+    }
+
+    @Test
+    void aggiungiNuovoMaestroErrato() throws BusinessException {
+
+        Maestro maestro = new Maestro();
+        maestro.setId(6);
+        maestro.setEmail("m");
+        maestro.setUsername("alalala");
+        maestro.setPassword("ma");
+
+        ramUtenteService.aggiungiMaestro(maestro);
+        assertThrows(BusinessException.class, () -> {
+            assertEquals(maestro, ramUtenteService.authenticate("ma", "ma"));
+        });
+    }
+
+    @Test
+    void aggiungiNuovoMaestroStessoNome() throws BusinessException {
+
+        Maestro maestro = new Maestro();
+        maestro.setId(7);
+        maestro.setEmail("rocco@gmail");
+        maestro.setUsername("Mimmo");
+        maestro.setPassword("m");
+
+        assertThrows(BusinessException.class, () -> {
+            assertEquals(maestro, ramUtenteService.aggiungiMaestro(maestro));
+        });
+        ramUtenteService.authenticate("Mimmo", "m");
     }
 }
