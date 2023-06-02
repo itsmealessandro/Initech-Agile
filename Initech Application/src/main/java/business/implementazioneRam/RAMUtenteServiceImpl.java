@@ -94,7 +94,7 @@ public class RAMUtenteServiceImpl implements UtenteService {
     private boolean controlloEsistenza(String newUsername) {
         for (Utente utente : listaUtenti) {
             if (utente.getUsername().equals(newUsername))
-                return true; //
+                return true;
         }
         return false;
     }

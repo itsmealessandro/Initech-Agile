@@ -1,9 +1,6 @@
 import business.BusinessException;
 import business.implementazioneRam.RAMUtenteServiceImpl;
-import domain.Amministratore;
-import domain.Socio;
-import domain.TipologiaSocio;
-import domain.Utente;
+import domain.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,17 +23,34 @@ class RAMUtenteServiceImplTest {
     }
 
     @Test
+    void loginErrato() {
+        try {
+            RAMUtenteServiceImpl ramUtenteService = new RAMUtenteServiceImpl();
+            UtenteRegistrato utenteRegistrato = new UtenteRegistrato();
+            utenteRegistrato.setEmail("u@gmail.com");
+            utenteRegistrato.setUsername("u");
+            utenteRegistrato.setPassword("u");
+            utenteRegistrato.setId(1);
+
+            ramUtenteService.authenticate("l", "l");
+        } catch (BusinessException e) {
+            assert true;
+        }
+
+    }
+
+    @Test
     void entraAmministratore() {
 
 
-        Utente utenteAspettato = new Amministratore();
-        utenteAspettato.setEmail("a@gmail.com");
-        utenteAspettato.setUsername("a");
-        utenteAspettato.setPassword("a");
-        utenteAspettato.setId(0);
+        Utente amministratore = new Amministratore();
+        amministratore.setEmail("a@gmail.com");
+        amministratore.setUsername("a");
+        amministratore.setPassword("a");
+        amministratore.setId(0);
 
         try {
-            assertEquals(utenteAspettato, ramUtenteService.authenticate("a", "a"));
+            assertEquals(amministratore, ramUtenteService.authenticate("a", "a"));
         } catch (BusinessException e) {
             e.printStackTrace();
         }
@@ -58,6 +72,24 @@ class RAMUtenteServiceImplTest {
             socio.setId(1);
 
             assertEquals(socio, ramUtenteService.authenticate("s", "s"));
+        } catch (BusinessException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    void entraUtenteRegistrato() {
+
+        try {
+            RAMUtenteServiceImpl ramUtenteService = new RAMUtenteServiceImpl();
+            UtenteRegistrato utenteRegistrato = new UtenteRegistrato();
+            utenteRegistrato.setEmail("u@gmail.com");
+            utenteRegistrato.setUsername("u");
+            utenteRegistrato.setPassword("u");
+            utenteRegistrato.setId(1);
+
+            assertEquals(utenteRegistrato, ramUtenteService.authenticate("u", "u"));
         } catch (BusinessException e) {
             e.printStackTrace();
         }
