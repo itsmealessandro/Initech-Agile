@@ -44,6 +44,7 @@ public class RAMImpiantoServiceImpl implements ImpiantoService {
         this.listaImpianti.add(impiantoSportivo);
         return true;
     }
+
     @Override
     public boolean modificaImpianto(ImpiantoSportivo impiantoSportivo) throws BusinessException {
         for (ImpiantoSportivo i : listaImpianti) {
@@ -57,6 +58,7 @@ public class RAMImpiantoServiceImpl implements ImpiantoService {
         return true;
 
     }
+
     @Override
     public boolean rimuoviImpianto(ImpiantoSportivo impiantoSportivo) throws BusinessException {
         Iterator<ImpiantoSportivo> impiantoSportivoIterator = listaImpianti.iterator();
