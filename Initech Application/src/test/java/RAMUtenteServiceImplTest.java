@@ -76,7 +76,6 @@ class RAMUtenteServiceImplTest {
         } catch (BusinessException e) {
             e.printStackTrace();
         }
-
     }
 
     @Test
@@ -183,4 +182,69 @@ class RAMUtenteServiceImplTest {
         });
         ramUtenteService.authenticate("Mimmo", "m");
     }
+
+    @Test
+    void rimozioneCorrettaMaestro() throws BusinessException {
+
+        Maestro maestro = new Maestro();
+        maestro.setId(8);
+        maestro.setEmail("m");
+        maestro.setUsername("ma");
+        maestro.setPassword("ma");
+
+        ramUtenteService.aggiungiMaestro(maestro);
+        assertEquals(true, ramUtenteService.rimuoviUtente(maestro.getId()));
+    }
+
+    @Test
+    void maestroUtenteNonTrovato() throws BusinessException {
+
+        Maestro maestro = new Maestro();
+        maestro.setId(8);
+        maestro.setEmail("m");
+        maestro.setUsername("ma");
+        maestro.setPassword("ma");
+
+        assertThrows(BusinessException.class, () -> {
+            assertEquals(true, ramUtenteService.rimuoviUtente(maestro.getId()));
+        });
+    }
+
+    @Test
+    void modificaCorrettaMaestro() throws BusinessException {
+
+        Maestro maestro = new Maestro();
+        maestro.setId(8);
+        maestro.setEmail("giorgio@gmail");
+        maestro.setUsername("Giorgio");
+        maestro.setPassword("gio");
+
+        ramUtenteService.aggiungiMaestro(maestro);
+
+        assertEquals(true, ramUtenteService.modificaUtente(maestro, "Veronica", true));
+    }
+
+    @Test
+    void maestroUsernameGiaPresente() throws BusinessException {
+
+        Maestro maestro = new Maestro();
+        maestro.setId(8);
+        maestro.setEmail("giorgio@gmail");
+        maestro.setUsername("Giorgio");
+        maestro.setPassword("gio");
+
+        Maestro maestro1 = new Maestro();
+        maestro1.setId(9);
+        maestro1.setEmail("veronica@gmail");
+        maestro1.setUsername("Veronica");
+        maestro1.setPassword("ver");
+
+        ramUtenteService.aggiungiMaestro(maestro);
+        ramUtenteService.aggiungiMaestro(maestro1);
+
+        assertThrows(BusinessException.class, () -> {
+            assertEquals(true, ramUtenteService.modificaUtente(maestro, "Veronica", true));
+        });
+    }
+
 }
