@@ -110,7 +110,7 @@ public class RAMUtenteServiceImpl implements UtenteService {
             }
         }
         for (Utente utenteX : listaUtenti) {
-            // Il controllo va fatto con l'ID e non con l'equalse
+            // Il controllo va fatto con l'ID e non con l'equals
             // Perché gli passiamo l'utente modificato quindi non potrà mai essere uguale
             if (utenteX.getId() == utente.getId()) {
                 utenteX.setUsername(newUsername);
