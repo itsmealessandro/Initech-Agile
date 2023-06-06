@@ -14,8 +14,7 @@ import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
 @ExtendWith(ApplicationExtension.class)
-class VisualizzaSociControllerTest {
-
+class VisualizzaMaestriControllerTest {
 
     @Start
     void onStart(Stage stage) throws ViewException {
@@ -24,14 +23,15 @@ class VisualizzaSociControllerTest {
         ViewDispatcher dispatcher = ViewDispatcher.getInstance();
         Utente admin = new Amministratore();
         dispatcher.loginView(stage);
-
         dispatcher.loggedIn(admin);
-        dispatcher.renderView("visualizza-soci", new Amministratore());
+
+        dispatcher.renderView("visualizza-maestri", new Amministratore());
 
     }
 
     @Test
-    void verificaLabel() {
+    void controlloErrorLabel() {
+
         verifyThat("#errorLabel", hasText("error label"));
     }
 
