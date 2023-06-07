@@ -35,13 +35,6 @@
         <!-- Dipendenza per TestFX-->
 
         <dependency>
-            <groupId>org.testfx</groupId>
-            <artifactId>testfx-junit5</artifactId>
-            <version>4.0.16-alpha</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>16</version>
@@ -53,9 +46,12 @@
             <version>16</version>
         </dependency>
 
+
+        <!-- Test Framework, Serve per far partire i Test di TestFX-->
+
         <dependency>
             <groupId>org.testfx</groupId>
-            <artifactId>testfx-core</artifactId>
+            <artifactId>testfx-junit5</artifactId>
             <version>4.0.16-alpha</version>
             <scope>test</scope>
         </dependency>
