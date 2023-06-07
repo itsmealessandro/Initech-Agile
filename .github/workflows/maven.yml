@@ -5,7 +5,6 @@
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
-	  
 name: Java CI with Maven
 
 on:
@@ -29,4 +28,3 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B verify -f InitechApplication/pom.xml
-	  
