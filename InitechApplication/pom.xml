@@ -14,9 +14,10 @@
         <junit.version>5.8.1</junit.version>
     </properties>
 
+
     <dependencies>
 
-        <!-- Dipendenze JUnit -->
+        <!-- Dipendenza per JUnit-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -31,16 +32,7 @@
             <scope>compile</scope>
         </dependency>
 
-
-        <!-- dipendenza per TestFX -->
-        <dependency>
-            <groupId>org.testfx</groupId>
-            <artifactId>testfx-core</artifactId>
-            <version>4.0.16-alpha</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- dipendenze per testare TestFX -->
+        <!-- Dipendenza per TestFX-->
 
         <dependency>
             <groupId>org.testfx</groupId>
@@ -61,10 +53,15 @@
             <version>16</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.testfx</groupId>
+            <artifactId>testfx-core</artifactId>
+            <version>4.0.16-alpha</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
-
-    <!-- Fine dipendenze -->
 
     <build>
         <plugins>
