@@ -1,5 +1,3 @@
-package controllers;
-
 import domain.Amministratore;
 import domain.Utente;
 import javafx.stage.Stage;
