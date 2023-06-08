@@ -27,4 +27,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B test --file InitechApplication/pom.xml
+      run: mvn -B verify -f InitechApplication/pom.xml
