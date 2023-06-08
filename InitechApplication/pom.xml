@@ -101,10 +101,10 @@
                     <includes>
                         <include>**/*_UT.java</include>
                     </includes>
-                    <excludes>
-                        <exclude>**/BaseTest.java</exclude>
-                        <exclude>**/TestsUtil.java</exclude>
-                    </excludes>
+<!--                    <excludes>-->
+<!--                        <exclude>**/BaseTest.java</exclude>-->
+<!--                        <exclude>**/TestsUtil.java</exclude>-->
+<!--                    </excludes>-->
                 </configuration>
             </plugin>
 
