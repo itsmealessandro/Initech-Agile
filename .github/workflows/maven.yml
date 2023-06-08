@@ -20,11 +20,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 16
+    - name: Set up JDK 16 with javaFX
       uses: actions/setup-java@v3
       with:
         java-version: '16'
         distribution: 'temurin'
-        cache: maven
+        #cache: maven
+    - name: Set Up JavaFX
+      run: sudo apt-get update sudo apt-get install -y openjfx
     - name: Build with Maven
-      run: mvn -B verify -f InitechApplication/pom.xml
+      run: mvn --batch-mode --update-snapshots package
