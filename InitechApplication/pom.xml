@@ -46,14 +46,6 @@
             <version>16</version>
         </dependency>
 
-        <!--Dipendenza per la CI -->
-        <dependency>
-            <groupId>org.testfx</groupId>
-            <artifactId>openjfx-monocle</artifactId>
-            <version>8u76-b04</version> <!-- jdk-9+181 for Java 9, jdk-11+26 for Java 11 -->
-            <scope>test</scope>
-        </dependency>
-
 
         <!-- Test Framework, Serve per far partire i Test di TestFX-->
 
