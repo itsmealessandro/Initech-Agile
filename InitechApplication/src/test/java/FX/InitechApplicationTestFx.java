@@ -1,5 +1,5 @@
-import domain.Amministratore;
-import domain.Utente;
+package FX;
+
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,25 +12,21 @@ import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
 @ExtendWith(ApplicationExtension.class)
-class VisualizzaMaestriControllerTest {
+class InitechApplicationTestFx {
+
 
     @Start
     void onStart(Stage stage) throws ViewException {
 
-
         ViewDispatcher dispatcher = ViewDispatcher.getInstance();
-        Utente admin = new Amministratore();
         dispatcher.loginView(stage);
-        dispatcher.loggedIn(admin);
-
-        dispatcher.renderView("visualizza-maestri", new Amministratore());
 
     }
 
     @Test
-    void controlloErrorLabel() {
-
-        verifyThat("#errorLabel", hasText("error label"));
+    void should_contain_first_button() {
+        // expect:
+        verifyThat("#loginButton", hasText("Login"));
     }
 
 

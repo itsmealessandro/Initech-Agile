@@ -1,3 +1,5 @@
+package FX;
+
 import domain.Amministratore;
 import domain.Utente;
 import javafx.stage.Stage;
@@ -12,7 +14,7 @@ import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
 @ExtendWith(ApplicationExtension.class)
-class VisualizzaSociControllerTest {
+class VisualizzaSociControllerTestFx {
 
 
     @Start
