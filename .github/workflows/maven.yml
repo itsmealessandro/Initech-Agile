@@ -26,9 +26,5 @@ jobs:
         java-version: '16'
         distribution: 'temurin'
         #cache: maven
-    - name: Set Up JavaFX
-      run: 
-        sudo apt-get update 
-        sudo apt-get install -y openjfx
     - name: Build with Maven
-      run: mvn --batch-mode --update-snapshots package
+      run: mvn -B verify -f InitechApplication/pom.xml
