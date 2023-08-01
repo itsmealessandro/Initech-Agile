@@ -1,5 +1,5 @@
 # Initech-Agile
-This is an application made for the course "metodi di sviluppo Agile" of UNIVAQ university.
+This is an application made for the course "metodi di sviluppo Agile" of UNIVAQ university.<br>
 The app incluse some basic functionalities such as login, registration and profile update.
 Then there are other functionalities, a bit more complex like:
 <ul>
